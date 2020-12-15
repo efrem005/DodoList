@@ -1,11 +1,11 @@
 let tasks = []
 
-if (localStorage.getItem('state') != undefined)
-    tasks = JSON.parse(localStorage.getItem('state')).map((el) => new Task(el.title, el.done))
+if (localStorage.getItem('stateTask') != undefined)
+    tasks = JSON.parse(localStorage.getItem('stateTask')).map((el) => new Task(el.title, el.done))
 
 function localSave(save) {
-    localStorage.removeItem('state')
-    localStorage.setItem('state', JSON.stringify(save))
+    localStorage.removeItem('stateTask')
+    localStorage.setItem('stateTask', JSON.stringify(save))
 }
 
 function deleteTaskHandler() {
@@ -69,7 +69,7 @@ function addTaskHandler() {
 
     if (inputEl.value) {
         tasks.push(new Task(inputEl.value))
-        localStorage.setItem('state', JSON.stringify(tasks))
+        localStorage.setItem('stateTask', JSON.stringify(tasks))
         renderTasks(tasks)
         inputEl.value = ''
     }
